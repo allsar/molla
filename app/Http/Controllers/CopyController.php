@@ -29,9 +29,17 @@ class CopyController extends Controller
     public function store(CopyRequest $request)
     {
         $data = $request->validated();
-        $data['parent_id'] = $data['parent_id'] == 0 ? null : $data['parent_id'];
-        CopyModel::query()->create($data);
-        return redirect()->route('copy.index', ['parent_id' => $data['parent_id']]);
+        if (!empty($data['method']) && $data['method'] == 1) {
+            $data['parent_id'] = $data['parent_id'] == 0 ? null : $data['parent_id'];
+            CopyModel::query()->create($data);
+        }
+        elseif (!empty($data['method']) && $data['method'] == 2){
+            CopyModel::query()->find($data['id'])->update([
+                'name' => $data['name'],
+                'description' => $data['description']
+            ]);
+        }
+        return redirect()->route('copy.index', ['parent_id' => $data['parent_id'] ?? 0]);
 
     }
 }

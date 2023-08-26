@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('title','Copy')
 @section('content')
+    @if($errors->any())
+        @foreach($errors->all() as $e)
+            <div class="alert alert-danger">{{$e}}</div>
+        @endforeach
+    @endif
         <section id="advanced-search-datatable">
             <div class="row">
                 <div class="card">

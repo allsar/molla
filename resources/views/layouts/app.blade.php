@@ -520,7 +520,7 @@
                                 data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Categories</span></a>
                     </li>
                     <li><a class="d-flex align-items-center" href="{{route('copy.index')}}"><i
-                                data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">Copy</span></a>
+                                data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">Manufacture</span></a>
                     </li>
                 </ul>
             </li>
