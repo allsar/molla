@@ -108,7 +108,6 @@
             let name = $(this).data('name');
             let description = $(this).data('description');
             $('#copyForm').attr('action', '{{route('copy.update')}}/'+id);
-
             $('#copyForm').append('<input type="hidden" name="_method" value="PUT">');
             $('#copyForm').append('<input type="hidden" name="id" value="'+id+'">');
             $('#name').val(name);

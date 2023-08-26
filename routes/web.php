@@ -22,3 +22,6 @@ Route::put('/categories/update/{id}', [\App\Http\Controllers\CategoryController:
 Route::get('/copy', [\App\Http\Controllers\CopyController::class, 'index'])->name('copy.index');
 Route::post('/copy/store', [\App\Http\Controllers\CopyController::class, 'store'])->name('copy.store');
 Route::put('/copy/update/{id?}', [\App\Http\Controllers\CopyController::class, 'update'])->name('copy.update');
+Route::get('/manufacture', [\App\Http\Controllers\ManufactureController::class, 'index'])->name('manufacture.index');
+Route::post('/manufacture/store', [\App\Http\Controllers\ManufactureController::class, 'store'])->name('manufacture.store');
+Route::put('/manufacture/update/{id?}', [\App\Http\Controllers\ManufactureController::class, 'update'])->name('manufacture.update');

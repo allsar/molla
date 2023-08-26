@@ -514,12 +514,15 @@
             <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i
                         data-feather="home"></i><span class="menu-title text-truncate"
                                                       data-i18n="Dashboards">Dashboards</span><span
-                        class="badge badge-light-warning rounded-pill ms-auto me-1">2</span></a>
+                        class="badge badge-light-warning rounded-pill ms-auto me-1">3</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{route('categories.index')}}"><i
                                 data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Categories</span></a>
                     </li>
                     <li><a class="d-flex align-items-center" href="{{route('copy.index')}}"><i
+                                data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">Copy</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="{{route('manufacture.index')}}"><i
                                 data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">Manufacture</span></a>
                     </li>
                 </ul>
