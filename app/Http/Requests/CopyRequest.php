@@ -23,7 +23,6 @@ class CopyRequest extends FormRequest
     {
         return [
             'name' => ['string', 'required', 'max:255'],
-            'parent_id' => ['required', 'int'],
             'description' => ['string']
         ];
     }

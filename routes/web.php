@@ -21,3 +21,4 @@ Route::get('/categories/edit/{id}', [\App\Http\Controllers\CategoryController::c
 Route::put('/categories/update/{id}', [\App\Http\Controllers\CategoryController::class, 'update'])->name('categories.update');
 Route::get('/copy', [\App\Http\Controllers\CopyController::class, 'index'])->name('copy.index');
 Route::post('/copy/store', [\App\Http\Controllers\CopyController::class, 'store'])->name('copy.store');
+Route::put('/copy/update/{id?}', [\App\Http\Controllers\CopyController::class, 'update'])->name('copy.update');

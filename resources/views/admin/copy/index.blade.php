@@ -15,8 +15,8 @@
                     </div>
                     <button></button>
                     <hr class="my-0"/>
-                    <div class="card-datatable">
-                        <table id="datatable" class="dt-advanced-search table">
+                    <div class="table-responsive">
+                        <table id="datatable" class="table table-bordered">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -46,10 +46,12 @@
                         <form class="form form-vertical" method="post" action="{{route('copy.store')}}" id="copyForm">
                             {{csrf_field()}}
                             <div class="row" id="copyFormBody">
-                                <input type="hidden" name="parent_id" value="{{request()->get('parent_id') ?? 0}}">
                                 <div class="col-12">
-                                    <div class="mb-1">
-                                        <input type="text" class="form-control" name="name" placeholder="name"/>
+                                    <div class="form-group">
+                                        <input type="text" id="name" class="form-control" name="name" placeholder="name"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="description" class="form-text form-control" id="description" cols="30" rows="10" placeholder="description"></textarea>
                                     </div>
                                 </div>
 
@@ -80,7 +82,7 @@
                         {data: 'id', name: 'id'},
                         {data: 'name', name: 'name'},
                         {data: 'description', name: 'description'},
-                        {data: 'created_at', name: 'created_at'},
+                        {data: 'created', name: 'created_at'},
                     ],
 
                     columnDefs: [
@@ -89,8 +91,8 @@
                             data: null,
                             render: function (row, type, val, meta) {
                                 let btn = '';
-                                btn += "<a href='{{url()->current()}}?parent_id=" + val.id + "' class='btn btn-primary'><i data-feather='arrow-right'></i></a>"
-                                btn+= '<button class="btn btn-primary edit-btn" data-bs-toggle="modal" data-bs-target="#addCopyModal" data-type="" data-id="'+val.id +'">Edit</button>'
+
+                                btn+= '<button class="btn btn-primary edit-btn" data-bs-toggle="modal" data-name="'+val.name +'"  data-description="'+val.description+'" data-bs-target="#addCopyModal" data-type="" data-id="'+val.id +'">Edit</button>'
                                 return btn
                             }
                         }
@@ -98,6 +100,19 @@
                     ]
                 }
             },
+        });
+
+
+        $(document).off('click', '.edit-btn').on('click', '.edit-btn', function () {
+            let id = $(this).data('id');
+            let name = $(this).data('name');
+            let description = $(this).data('description');
+            $('#copyForm').attr('action', '{{route('copy.update')}}/'+id);
+
+            $('#copyForm').append('<input type="hidden" name="_method" value="PUT">');
+            $('#copyForm').append('<input type="hidden" name="id" value="'+id+'">');
+            $('#name').val(name);
+            $('#description').val(description);
         });
     </script>
     @endsection
