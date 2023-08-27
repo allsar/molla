@@ -28,3 +28,7 @@ Route::put('/manufacture/update/{id?}', [\App\Http\Controllers\ManufactureContro
 Route::get('/features', [\App\Http\Controllers\FeatureController::class, 'index'])->name('features.index');
 Route::post('/features/store', [\App\Http\Controllers\FeatureController::class, 'store'])->name('features.store');
 Route::put('/features/update/{id?}', [\App\Http\Controllers\FeatureController::class, 'update'])->name('features.update');
+Route::get('/features/values/{id?}', [\App\Http\Controllers\FeatureController::class, 'getFeauteValues'])->name('features.values');
+Route::get('/', function (){
+    return view('welcome');
+});

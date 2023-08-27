@@ -50,9 +50,8 @@
                                     <div class="form-group">
                                         <input type="text" id="name" class="form-control" name="name" placeholder="name"/>
                                     </div>
-                                    <div class="form-group">
-                                        <textarea name="description" class="form-text form-control" id="description" cols="30" rows="10" placeholder="description"></textarea>
-                                    </div>
+
+
                                 </div>
 
                                 <div class="col-12">
@@ -113,6 +112,8 @@
             $('#name').val(name);
             $('#description').val(description);
         });
+
+
     </script>
     @endsection
 

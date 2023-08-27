@@ -37,35 +37,129 @@
     </section>
     <div class="modal fade" id="addFeatureModal" tabindex="-1" aria-labelledby="addFeatureModalTitle"
          aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-transparent">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body px-sm-5 mx-50 pb-5">
-                    <form class="form form-vertical" method="post" action="{{route('features.store')}}" id="modalForm">
+                <form class="form form-vertical feature-repeater" method="post" action="{{route('features.store')}}"
+                      id="modalForm">
+                    <div class="modal-body px-sm-5 mx-50 pb-5">
                         {{csrf_field()}}
-                        <div class="row" id="featureFormBody">
+                        <div class="row" data-repeater-list="features" id="featureFormBody">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <input type="text" id="name" class="form-control" name="name" placeholder="name"/>
+                                    <label>
+                                        <input type="text" id="name" class="form-control" name="name"
+                                               placeholder="name"/>
+                                    </label>
                                 </div>
-                                <div class="form-group">
-                                    <textarea name="description" class="form-text form-control" id="description" cols="30" rows="10" placeholder="description"></textarea>
+                                <hr/>
+
+                                <div data-repeater-list="features">
+                                    <div data-repeater-item>
+                                        <div class="row d-flex align-items-center my-1">
+                                            <div class="col-md-10">
+                                                <label>
+                                                    <input type="text" class="form-control" name="value"
+                                                           placeholder="feature value">
+                                                </label>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class=" btn btn-danger " data-repeater-delete>
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                    </div>
                                 </div>
+
                             </div>
 
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary me-1">Submit</button>
-                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
-                            </div>
+
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="row m-1">
+                        <div class="col-12 text-end">
+                            <button class="btn btn-icon btn-primary" type="button" data-repeater-create>
+                                <i data-feather="plus" class="me-25"></i>
+                                <span>Add New</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-primary me-1">Submit</button>
+                        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="updateFeatureModal" tabindex="-1" aria-labelledby="updateFeatureModalTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-transparent">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="form form-vertical feature-repeater-update" method="post"
+                      action="{{route('features.update')}}"
+                      id="updateForm">
+                    <div class="modal-body px-sm-5 mx-50 pb-5">
+                        {{csrf_field()}}
+                        <div class="row" data-repeater-list="features" id="">
+                            <input type="hidden" name="id" id="update-id">
+                            <div class="form-group">
+                                <label>
+                                    <input type="text" id="update-name" class="form-control" name="name"
+                                           placeholder="name"/>
+                                </label>
+                            </div>
+                            <hr/>
+                            <div data-repeater-list="features" id="updateFeatureModalBody">
 
+
+
+                                <div data-repeater-item>
+                                    <div class="row d-flex align-items-center my-1">
+                                        <div class="col-md-10">
+                                            <label>
+                                                <input type="text" class="form-control" name="value"
+                                                       placeholder="feature value">
+                                            </label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class=" btn btn-danger " data-repeater-delete>
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="row m-1">
+                        <div class="col-12 text-end">
+                            <button class="btn btn-icon btn-primary" type="button" data-repeater-create>
+                                <i data-feather="plus" class="me-25"></i>
+                                <span>Add New</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-primary me-1">Submit</button>
+                        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('page_js')
     <script>
@@ -89,8 +183,8 @@
                             render: function (row, type, val, meta) {
                                 let btn = '';
 
-                                btn+= '<button class="btn btn-primary edit-btn" data-bs-toggle="modal" data-name="'+val.name +'"  data-description="'+val.description+'" data-bs-target="#addFeatureModal" data-type="" data-id="'+val.id +'">Edit</button>'
-                                btn+= '<button class="btn btn-danger delete-btn"  data-id="'+val.id +'">Delete</button>'
+                                btn += '<button class="btn btn-primary edit-btn" data-bs-toggle="modal" data-name="' + val.name + '"  data-bs-target="#updateFeatureModal" data-type="" data-id="' + val.id + '">Edit</button>'
+                                btn += '<button class="btn btn-danger delete-btn"  data-id="' + val.id + '">Delete</button>'
                                 return btn
                             }
                         }
@@ -99,22 +193,31 @@
                 }
             },
         });
-        $(document).off('click', '.edit-btn').on('click', '.edit-btn', function (){
+        $(document).off('click', '.edit-btn').on('click', '.edit-btn', function () {
             let id = $(this).data('id');
             let name = $(this).data('name');
-            let description = $(this).data('description');
-            $('#modalForm').attr('action', '{{route('features.update')}}/'+id);
-            $('#modalForm').append('<input type="hidden" name="_method" value="PUT">');
-            $('#modalForm').append('<input type="hidden" name="id" value="'+id+'">');
-            $('#name').val(name);
-            $('#description').val(description);
+            $('#update-name').val(name)
+            $('#update-id').val(id)
+            $('#updateFeatureModalBody').html('')
+            $('#updateForm').attr('action', '{{route('features.update')}}/' + id)
+            $('#updateForm').append('<input type="hidden" name="_method" value="put">')
+            $.ajax({
+                type: 'get',
+                data: {id: id},
+                url: '{{route('features.values')}}/' + id,
+                success: function (response) {
+                    $('#updateFeatureModalBody').append(response.content)
+                },
+                error: function (data) {
+                }
+            });
         })
-        $(document).off('click', '.delete-btn').on('click', '.delete-btn', function (){
+        $(document).off('click', '.delete-btn').on('click', '.delete-btn', function () {
             let id = $(this).data('id');
             $.ajax({
                 type: 'delete',
-                data: { id: id },
-                url: '{{route('features.delete')}}/'+id,
+                data: {id: id},
+                url: '{{route('features.delete')}}/' + id,
                 success: function (response) {
                     alert('ok')
                 },
@@ -122,6 +225,33 @@
                 }
             });
         })
+        $(function () {
+            'use strict';
+            $('.feature-repeater, .feature-default').repeater({
+                isFirstItemUndeletable: true,
+                initEmpty: true,
+                show: function () {
+                    $(this).slideDown();
+
+                },
+                hide: function (deleteElement) {
+                    $(this).slideUp(deleteElement);
+                }
+            });
+        });
+        $(function () {
+            'use strict';
+            $('.feature-repeater-update, .feature-default').repeater({
+
+                show: function () {
+                    $(this).slideDown();
+
+                },
+                hide: function (deleteElement) {
+                    $(this).slideUp(deleteElement);
+                }
+            });
+        });
     </script>
 @endsection
 

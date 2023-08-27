@@ -465,7 +465,7 @@
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item me-auto"><a class="navbar-brand"
-                                            href="../../../html/ltr/vertical-menu-template-dark/index.html"><span
+                                            href="/"><span
                         class="brand-logo">
                             <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
@@ -580,6 +580,7 @@
 <script src="{{asset('assets/js/dataTables.bootstrap5.min.js')}}"></script>
 
 <!-- BEGIN: Page Vendor JS-->
+<script src="{{asset('app-assets/vendors/js/forms/repeater/jquery.repeater.min.js')}}"></script>
 @yield('page_vendor_js')
 <!-- END: Page Vendor JS-->
 
