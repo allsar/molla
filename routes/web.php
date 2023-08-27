@@ -25,3 +25,6 @@ Route::put('/copy/update/{id?}', [\App\Http\Controllers\CopyController::class, '
 Route::get('/manufacture', [\App\Http\Controllers\ManufactureController::class, 'index'])->name('manufacture.index');
 Route::post('/manufacture/store', [\App\Http\Controllers\ManufactureController::class, 'store'])->name('manufacture.store');
 Route::put('/manufacture/update/{id?}', [\App\Http\Controllers\ManufactureController::class, 'update'])->name('manufacture.update');
+Route::get('/features', [\App\Http\Controllers\FeatureController::class, 'index'])->name('features.index');
+Route::post('/features/store', [\App\Http\Controllers\FeatureController::class, 'store'])->name('features.store');
+Route::put('/features/update/{id?}', [\App\Http\Controllers\FeatureController::class, 'update'])->name('features.update');

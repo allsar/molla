@@ -23,3 +23,5 @@ Route::get('/copy/data', [\App\Http\Controllers\CopyController::class, 'getData'
 Route::get('/copy/update/{id?}', [\App\Http\Controllers\CopyController::class, 'getUpdate'])->name('copy.get-update');
 Route::get('/manufacture/data', [\App\Http\Controllers\ManufactureController::class, 'getData'])->name('manufacture.data');
 Route::delete('/manufacture/delete/{id?}', [\App\Http\Controllers\ManufactureController::class, 'delete'])->name('manufacture.delete');
+Route::get('/features/data', [\App\Http\Controllers\FeatureController::class, 'getData'])->name('features.data');
+Route::delete('/features/delete/{id?}', [\App\Http\Controllers\FeatureController::class, 'delete'])->name('features.delete');
