@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Copy')
+@section('title','Manufacture')
 @section('content')
     @if($errors->any())
         @foreach($errors->all() as $e)

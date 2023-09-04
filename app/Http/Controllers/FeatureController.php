@@ -71,7 +71,7 @@ class FeatureController extends Controller
     }
 
 
-    public function getFeauteValues($id)
+    public function getFeatureValues($id)
     {
         $values = FeatureValue::query()->where('feature_id', $id)->get();
         return response()->json([

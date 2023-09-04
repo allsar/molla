@@ -25,3 +25,5 @@ Route::get('/manufacture/data', [\App\Http\Controllers\ManufactureController::cl
 Route::delete('/manufacture/delete/{id?}', [\App\Http\Controllers\ManufactureController::class, 'delete'])->name('manufacture.delete');
 Route::get('/features/data', [\App\Http\Controllers\FeatureController::class, 'getData'])->name('features.data');
 Route::delete('/features/delete/{id?}', [\App\Http\Controllers\FeatureController::class, 'delete'])->name('features.delete');
+Route::get('/properties/data', [\App\Http\Controllers\PropertyController::class, 'getData'])->name('properties.data');
+Route::delete('/properties/delete/{id?}', [\App\Http\Controllers\PropertyController::class, 'delete'])->name('properties.delete');

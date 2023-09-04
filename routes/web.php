@@ -28,7 +28,11 @@ Route::put('/manufacture/update/{id?}', [\App\Http\Controllers\ManufactureContro
 Route::get('/features', [\App\Http\Controllers\FeatureController::class, 'index'])->name('features.index');
 Route::post('/features/store', [\App\Http\Controllers\FeatureController::class, 'store'])->name('features.store');
 Route::put('/features/update/{id?}', [\App\Http\Controllers\FeatureController::class, 'update'])->name('features.update');
-Route::get('/features/values/{id?}', [\App\Http\Controllers\FeatureController::class, 'getFeauteValues'])->name('features.values');
+Route::get('/features/values/{id?}', [\App\Http\Controllers\FeatureController::class, 'getFeatureValues'])->name('features.values');
+Route::get('/properties', [\App\Http\Controllers\PropertyController::class, 'index'])->name('properties.index');
+Route::post('/properties/store', [\App\Http\Controllers\PropertyController::class, 'store'])->name('properties.store');
+Route::put('/properties/update/{id?}', [\App\Http\Controllers\PropertyController::class, 'update'])->name('properties.update');
+Route::get('/properties/values/{id?}', [\App\Http\Controllers\PropertyController::class, 'getPropertyValues'])->name('properties.values');
 Route::get('/', function (){
     return view('welcome');
 });
